@@ -3,6 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+/*
+ * Input matix has mean normalization
+ * Target vecot has -1 to 1 normalization
+ */
+
 package testruns;
 
 import java.io.BufferedReader;
@@ -35,7 +41,11 @@ public class MLR_GD {
     private double prediction(double[] x, double[] w) {
         double pred = 0.0;
         for (int i = 0; i < w.length; i++) {
-            pred = pred + w[i] * x[i];
+            //Multiple learning regression y = w1*x1+.....wn*xn + wn+1*xn+1; 
+            //                                n is the total number of features, 
+            //                                xn+1 -s the constant set to 1.0
+            //                                wn+1 is the weights corsponding to bias.
+            pred = pred + w[i] * x[i];//Objective function (customize this fuction suited to your data)
         }
         return pred;
     }
